@@ -1,0 +1,27 @@
+name: Verificar links
+
+on:
+  schedule:
+    - cron: "17 9 * * 1"   # toda segunda-feira, 06h17 (Brasília)
+  workflow_dispatch:
+  push:
+    paths:
+      - "catalogo/**"
+      - "fontes/**"
+      - "docs/**"
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Regenerar catálogo e conferir se está em dia
+        run: |
+          python scripts/gerar_catalogo.py
+          git diff --ignore-matching-lines="Gerado automaticamente" --exit-code catalogo/catalogo-bases.md \
+            || (echo "::error::catalogo-bases.md desatualizado — rode scripts/gerar_catalogo.py" && exit 1)
+      - name: Testar links
+        run: python scripts/verificar_links.py

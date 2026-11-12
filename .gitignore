@@ -1,0 +1,11 @@
+# PDFs baixados do FTP (reproduzíveis via scripts/baixar_documentacao.py)
+fontes/pdf/
+
+# Microdados nunca entram no repositório
+*.dbc
+*.dbf
+*.parquet
+
+__pycache__/
+.venv/
+.DS_Store
