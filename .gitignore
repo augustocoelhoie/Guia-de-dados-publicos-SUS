@@ -9,3 +9,9 @@ fontes/pdf/
 __pycache__/
 .venv/
 .DS_Store
+
+# Áudio e documentos de trabalho (publicados por link, não no repositório)
+*.mp3
+*.m4a
+*.wav
+*.docx

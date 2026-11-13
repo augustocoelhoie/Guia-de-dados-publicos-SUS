@@ -39,7 +39,9 @@ Rode `python scripts/baixar_documentacao.py` — ele percorre o FTP e salva tudo
 | Prioridade | Fonte | Artigos-chave | Tipo | Link |
 |---|---|---|---|---|
 | 🟢 | Lei nº 13.709/2018 (LGPD) — texto compilado | Art. 5º (definições, dado sensível), 7º, 11 (dados sensíveis), 12 (anonimização), 13 (estudos em saúde pública) | URL ou PDF | https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm |
-| 🟡 | Guia de boas práticas da LGPD (Governo Digital) | Aplicação no setor público | URL | https://www.gov.br/governodigital/pt-br/governanca-de-dados/guia-de-boas-praticas-lei-geral-de-protecao-de-dados-lgpd |
+| 🟡 | Guia "Orientações e Boas Práticas na Proteção de Dados Pessoais" (material de apoio LGPD do MCTI) | Aplicação da LGPD no setor público | PDF | https://www.gov.br/mcti/pt-br/acesso-a-informacao/lei-geral-de-protecao-de-dados-pessoais-lgpd/material-de-apoio-1 |
+
+> Nota de curadoria: o link original do Guia de Boas Práticas da LGPD (Governo Digital) estava fora do ar em 11/2026 e foi substituído pela página de material de apoio do MCTI. Os guias de *tarjamento* foram deixados de fora porque tratam de ocultar dados em documentos para a LAI, não de análise de dados.
 
 ## 4. Interoperabilidade e RNDS
 

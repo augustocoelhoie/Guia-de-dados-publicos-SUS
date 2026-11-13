@@ -7,21 +7,43 @@ Tempo estimado: **40–60 min**.
 2. Nome: **Guia de Dados Públicos do SUS**.
 
 ## 2. Adicionar fontes
-1. Rode `python scripts/baixar_documentacao.py` e escolha os PDFs indicados em `fontes/fontes-notebooklm.md`.
-2. Renomeie os arquivos com nomes claros (`SIM_dicionario_DO.pdf`).
-3. Suba os PDFs e cole as URLs (LGPD, portarias, RNDS) em **Adicionar fonte → Site**.
-4. Abra cada fonte e confira se o texto foi extraído (PDF escaneado aparece vazio → registre como R1).
+
+> O NotebookLM é um site: ele **não abre pastas**. O VS Code serve só para baixar os PDFs; depois você envia os arquivos um a um (ou vários de uma vez) pelo navegador.
+
+### 2a. No VS Code: ver o tamanho e baixar
+1. **Arquivo → Abrir pasta** → selecione `guia-dados-sus`.
+2. **Terminal → Novo terminal**.
+3. Confira o Python: `python --version` (no Windows, se falhar, use `py --version` e troque `python` por `py` nos comandos).
+4. Só listar, sem baixar nada (mostra o tamanho e o tempo estimado):
+   `python scripts/baixar_documentacao.py --listar`
+5. Baixar um sistema por vez, começando pelo menor:
+   `python scripts/baixar_documentacao.py SIM` → depois `SINASC`, `CNES`, `SIH`, `SIA`.
+6. Os arquivos aparecem em `fontes/pdf/<SISTEMA>/`. Se você rodar de novo, o que já foi baixado é pulado.
+
+### 2b. No explorador de arquivos: escolher e renomear
+1. Abra `fontes/pdf/` e escolha os documentos 🟢 de `fontes/fontes-notebooklm.md` (o dicionário ou informe técnico mais recente de cada sistema).
+2. Renomeie com nomes claros: `SIM_dicionario_DO.pdf`, `SIH_informe_tecnico_RD.pdf`.
+3. Para fontes que são páginas web e não importam bem (ex.: o texto da LGPD no Planalto), abra no navegador e use **Ctrl+P → Salvar como PDF**.
+
+### 2c. No NotebookLM: enviar
+1. No notebook, clique em **+ Adicionar fontes** (ou **Fontes → +**).
+2. **Fazer upload** → selecione os PDFs renomeados.
+3. Para cada URL: **+ Adicionar fontes → Site** → cole o link → **Inserir**.
+4. Clique em cada fonte na barra lateral e confira se o texto aparece. PDF escaneado aparece vazio → anote como **R1** em `avaliacao/registro-de-erros.md`.
 
 ## 3. Instruções do notebook
-Em **Configurar conversa → Personalizado**, cole:
+Em Configurar conversa → Personalizado, cole:
 
-```
 Você é um guia para analistas que vão usar dados públicos do SUS.
 Responda em português, sempre citando o documento e o trecho.
 Se a resposta não estiver nas fontes, diga claramente que não está
 e sugira onde procurar. Nunca invente números, variáveis ou artigos.
-Ao falar de uma variável, informe a base, o nome exato e a unidade.
-```
+Responda apenas ao que foi perguntado. Liste variáveis só quando a
+pergunta pedir; nesse caso, informe a base, o nome exato e a unidade.
+Use os nomes de arquivo do DATASUS (RD, SP, PA, DO, DN, ST), não os
+nomes usados por pacotes como microdatasus (ex.: "SIH-RD").
+
+Versão 2 das instruções (13/11/2026). A versão 1 pedia "ao falar de uma variável, informe a base, o nome exato e a unidade", o que fazia a ferramenta acrescentar listas de variáveis em toda resposta.
 
 ## 4. Notas fixas (opcional, mas melhora muito)
 Crie notas com: a tabela-resumo do `catalogo/catalogo-bases.md` e o `docs/armadilhas.md`.
